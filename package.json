@@ -10,6 +10,7 @@
     "connected-react-router": "^6.8.0",
     "lodash": "^4.17.15",
     "react": "^16.13.1",
+    "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
@@ -34,13 +35,13 @@
       "not op_mini all"
     ],
     "development": [
+      "ie 11",
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/test/setupTests.js",
     "roots": [
       "<rootDir>"
     ],
@@ -51,6 +52,9 @@
     "setupFiles": [
       "react-app-polyfill/jsdom",
       "<rootDir>/test/setupTests.js"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>test/setupTests.js"
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
@@ -92,11 +96,18 @@
       "jest-watch-typeahead/testname"
     ]
   },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  },
   "devDependencies": {
+    "babel-jest": "^24.9.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.5.0",
     "jest-environment-jsdom-fourteen": "^1.0.1",
-    "jest-resolve": "^26.0.1"
+    "jest-resolve": "^26.0.1",
+    "react-infinite-scroller": "^1.2.4"
   }
 }

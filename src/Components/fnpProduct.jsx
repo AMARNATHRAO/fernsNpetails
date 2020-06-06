@@ -46,14 +46,35 @@ export class fnpProduct extends Component {
 
   onFavoriteClick() {
     const { isProductFavorite } = this.state;
+    const { product } = this.props;
     this.setState({
       isProductFavorite: !isProductFavorite,
     });
+    let existingFavorites = localStorage.getItem('favorites') || {};
+    if (Object.keys(existingFavorites).length) {
+      existingFavorites = JSON.parse(existingFavorites);
+    }
+    const { sku } = product;
+    existingFavorites[sku] = !isProductFavorite;
+    localStorage.setItem('favorites', JSON.stringify(existingFavorites));
+  }
+
+  isFavorite() {
+    // const {product} = this.props;
+    const sku = _.get(this.props, 'product.sku', null);
+    let existingFavorites = localStorage.getItem('favorites') || {};
+    if (Object.keys(existingFavorites).length) {
+      existingFavorites = JSON.parse(existingFavorites);
+    }
+    return existingFavorites[sku];
   }
 
   render() {
     const { product } = this.props;
-    const { isProductFavorite } = this.state;
+    if (!product || (product && Object.keys(product).length === 0)) {
+      return null;
+    }
+    const isProductFavorite = this.isFavorite();
     let productClassName = this.getProductClassName();
     productClassName = `col-md-6 ${productClassName}`;
     return (

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import InfiniteScroll from 'react-infinite-scroller';
 import { fetchProducts } from '../Actions/FNPActions';
 import FNPProduct from '../Components/fnpProduct';
 import '../App.css';
-import fnpLogo from '../Images/fnp.jpg';
 
 const mapStateToProps = (store) => ({
   products: store.fnp.products,
@@ -25,14 +25,26 @@ class fnp extends Component {
   }
 
   loadProducts() {
-    const { products } = this.props;
+    const { products, fetchFnpProducts } = this.props;
     if (products && products.length > 0) {
       const productsHtml = products.map((product, index) => {
         return <FNPProduct key={index + 1} index={index} product={product} />;
       });
       return (
         <>
-          <div className="row">{productsHtml}</div>
+          <div className="row">
+            <InfiniteScroll
+              hasMore={true}
+              initialLoad={false}
+              useWindow={true}
+              threshold={250}
+              loadMore={() => {
+                fetchFnpProducts();
+              }}
+            >
+              {productsHtml}
+            </InfiniteScroll>
+          </div>
         </>
       );
     }
@@ -49,7 +61,6 @@ class fnp extends Component {
               <span className="glyphicon glyphicon-align-justify" style={{ color: '#fff', paddingRight: '5px' }}></span>
               <span className="logo">
                 ferns<b>N</b>petals
-                {/* <img src={fnpLogo} alt="" /> */}
               </span>
             </div>
             <div style={{ paddingTop: '51px', position: 'relative' }}>{this.loadProducts()}</div>
