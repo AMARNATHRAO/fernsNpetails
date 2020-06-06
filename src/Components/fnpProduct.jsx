@@ -5,7 +5,10 @@ import '../App.css';
 export class fnpProduct extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isProductFavorite: false,
+    };
+    this.onFavoriteClick = this.onFavoriteClick.bind(this);
   }
 
   getPrice() {
@@ -41,8 +44,16 @@ export class fnpProduct extends Component {
     );
   }
 
+  onFavoriteClick() {
+    const { isProductFavorite } = this.state;
+    this.setState({
+      isProductFavorite: !isProductFavorite,
+    });
+  }
+
   render() {
     const { product } = this.props;
+    const { isProductFavorite } = this.state;
     let productClassName = this.getProductClassName();
     productClassName = `col-md-6 ${productClassName}`;
     return (
@@ -52,6 +63,11 @@ export class fnpProduct extends Component {
             <img src={product.imgSrc || ''} alt="" className="panel-img" />
           </a>
           {product.bestSeller && <div className="best-seller-label">BEST SELLER</div>}
+          {isProductFavorite ? (
+            <div className="fa fa-heart favorite" aria-hidden="true" onClick={this.onFavoriteClick}></div>
+          ) : (
+            <div className="fa fa-heart not-favorite" aria-hidden="true" onClick={this.onFavoriteClick}></div>
+          )}
           <div style={{ height: '85px' }}>
             <div className="cake-name">{product.title || ''}</div>
             {this.getPrice()}

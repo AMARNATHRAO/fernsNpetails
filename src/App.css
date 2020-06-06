@@ -86,6 +86,31 @@ body {
   line-height: 16px;
 }
 
+.favorite {
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  top: 2px;
+  line-height: 16px;
+  margin-right: 10px;
+  color: #008539;
+  display: flex;
+  margin-left: 185px;
+  cursor: pointer;
+}
+.not-favorite {
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  top: 2px;
+  line-height: 16px;
+  margin-right: 10px;
+  color: red;
+  display: flex;
+  margin-left: 185px;
+  cursor: pointer;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

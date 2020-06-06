@@ -30,9 +30,13 @@ class fnp extends Component {
       const productsHtml = products.map((product, index) => {
         return <FNPProduct key={index + 1} index={index} product={product} />;
       });
-      return <div className="row">{productsHtml}</div>;
+      return (
+        <>
+          <div className="row">{productsHtml}</div>
+        </>
+      );
     }
-    return <div>No Products</div>;
+    return <div style={{ textAlign: 'center' }}>No Products</div>;
   }
 
   render() {
