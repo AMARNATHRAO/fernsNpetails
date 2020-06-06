@@ -88,7 +88,7 @@ class fnp extends Component {
                       href="https://www.fnp.com/?utm_source=affiliate&utm_medium=Banner&utm_campaign=icubes_177_A1"
                       rel="noopener noreferrer"
                       target="_blank"
-                      style={{ textDecoration: 'none' }}
+                      style={{ textDecoration: 'none', color: '#fff', paddingBottom: '5px' }}
                     >
                       Home
                     </a>
@@ -98,7 +98,7 @@ class fnp extends Component {
                       href="https://www.fnp.com/info/about-us"
                       rel="noopener noreferrer"
                       target="_blank"
-                      style={{ textDecoration: 'none' }}
+                      style={{ textDecoration: 'none', color: '#fff', paddingBottom: '5px' }}
                     >
                       About Us
                     </a>
@@ -108,7 +108,7 @@ class fnp extends Component {
                       href="https://www.fnp.com/cakes?promo=cakes_tab_dt_hm"
                       rel="noopener noreferrer"
                       target="_blank"
-                      style={{ textDecoration: 'none' }}
+                      style={{ textDecoration: 'none', color: '#fff', paddingBottom: '5px' }}
                     >
                       Cakes
                     </a>
@@ -118,7 +118,7 @@ class fnp extends Component {
                       href="https://www.fnp.com/flowers?promo=flowers_tab_dt_hm"
                       rel="noopener noreferrer"
                       target="_blank"
-                      style={{ textDecoration: 'none' }}
+                      style={{ textDecoration: 'none', color: '#fff', paddingBottom: '5px' }}
                     >
                       Flowers
                     </a>
@@ -129,7 +129,7 @@ class fnp extends Component {
                 ferns<b>N</b>petals
               </span>
             </div>
-            <div style={{ paddingTop: '51px', position: 'relative' }}>{this.loadProducts()}</div>
+            <div style={{ paddingTop: '51px', position: 'relative', paddingBottom: '5px' }}>{this.loadProducts()}</div>
           </div>
         </div>
       </div>
