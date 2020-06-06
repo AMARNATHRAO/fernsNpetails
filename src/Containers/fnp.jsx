@@ -26,11 +26,13 @@ class fnp extends Component {
 
   loadProducts() {
     const { products } = this.props;
-
-    const productsHtml = products.map((product, index) => {
-      return <FNPProduct key={index + 1} index={index} product={product} />;
-    });
-    return <div className="row">{productsHtml}</div>;
+    if (products && products.length > 0) {
+      const productsHtml = products.map((product, index) => {
+        return <FNPProduct key={index + 1} index={index} product={product} />;
+      });
+      return <div className="row">{productsHtml}</div>;
+    }
+    return <div>No Products</div>;
   }
 
   render() {
@@ -46,7 +48,7 @@ class fnp extends Component {
                 {/* <img src={fnpLogo} alt="" /> */}
               </span>
             </div>
-            <div style={{ paddingTop: '5px' }}>{this.loadProducts()}</div>
+            <div style={{ paddingTop: '51px', position: 'relative' }}>{this.loadProducts()}</div>
           </div>
         </div>
       </div>

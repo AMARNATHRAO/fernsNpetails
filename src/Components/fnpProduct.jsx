@@ -28,6 +28,19 @@ export class fnpProduct extends Component {
     return '';
   }
 
+  renderRating(rating) {
+    rating = Math.floor(rating);
+    return (
+      <>
+        {rating >= 1 ? <span className="fa fa-star checked"></span> : <span className="fa fa-star unchecked"></span>}
+        {rating >= 2 ? <span className="fa fa-star checked"></span> : <span className="fa fa-star unchecked"></span>}
+        {rating >= 3 ? <span className="fa fa-star checked"></span> : <span className="fa fa-star unchecked"></span>}
+        {rating >= 4 ? <span className="fa fa-star checked"></span> : <span className="fa fa-star unchecked"></span>}
+        {rating >= 5 ? <span className="fa fa-star checked"></span> : <span className="fa fa-star unchecked"></span>}
+      </>
+    );
+  }
+
   render() {
     const { product } = this.props;
     let productClassName = this.getProductClassName();
@@ -57,28 +70,12 @@ export class fnpProduct extends Component {
           <div>
             <span className="checked">{product.ratingCount || 0}</span>
             &nbsp;
-            <span className="fa fa-star checked"></span>
-            <span className="fa fa-star checked"></span>
-            <span className="fa fa-star checked"></span>
-            <span className="fa fa-star"></span>
-            <span className="fa fa-star"></span>
+            {this.renderRating(product.ratingCount || 0)}
             &nbsp;
             {product.reviewCount && <span>{product.reviewCount} Reviews</span>}
           </div>
         </div>
       </div>
-
-      // <div>
-      //   <a href={product.landingPage} rel="noopener noreferrer" target="_blank">
-      //     <img src={product.imgSrc || ''} alt="" />
-      //   </a>
-      //   {product.bestSeller && <div>BEST SELLER</div>}
-      //   <div>{product.title || ''}</div>
-      //   <div>₹{product.sellingPrice || 0}</div>
-      //   {this.getPrice()}
-      //   {product.discountPercentage && <div>{product.discountPercentage}% OFF</div>}
-      //   {product.reviewCount && <div>{product.reviewCount} Reviews</div>}
-      // </div>
     );
   }
 }

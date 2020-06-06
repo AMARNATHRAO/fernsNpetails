@@ -16,8 +16,10 @@ body {
 .header-green {
   background-color: #008539;
   height: 50px;
-  width: 100%;
+  width: 32%;
   padding: 10px;
+  position: fixed;
+  z-index: 10000;
 }
 .logo {
   color: #fff;
@@ -68,6 +70,10 @@ body {
 .checked {
   color: orange;
 }
+.unchecked {
+  color: #ccc;
+}
+
 .best-seller-label {
   width: 100px;
   background: #008539;
