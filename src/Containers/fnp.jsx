@@ -16,7 +16,10 @@ const mapDispatchToProps = {
 class fnp extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      showMenuIcons: false,
+    };
+    this.menuIconsToggle = this.menuIconsToggle.bind(this);
   }
 
   componentDidMount() {
@@ -51,14 +54,77 @@ class fnp extends Component {
     return <div style={{ textAlign: 'center' }}>No Products</div>;
   }
 
+  menuIconsToggle() {
+    const { showMenuIcons } = this.state;
+    this.setState({
+      showMenuIcons: !showMenuIcons,
+    });
+  }
+
   render() {
+    const { showMenuIcons } = this.state;
     return (
       <div>
         <div className="row">
           <div className="col-md-4 col-sm-4 col-xs-0"></div>
           <div className="col-md-4col-md-4 col-sm-4 col-xs-12">
             <div className="header-green">
-              <span className="glyphicon glyphicon-align-justify" style={{ color: '#fff', paddingRight: '5px' }}></span>
+              <div className="dropdown" style={{ display: 'inline-block' }}>
+                <button
+                  className="btn btn-primary dropdown-toggle"
+                  type="button"
+                  data-toggle="dropdown"
+                  onClick={this.menuIconsToggle}
+                  onBlur={this.menuIconsToggle}
+                >
+                  <span
+                    className="glyphicon glyphicon-align-justify"
+                    style={{ color: '#fff', paddingRight: '5px' }}
+                  ></span>
+                </button>
+                <ul className={showMenuIcons ? 'show-dropdown' : 'dont-show-dropdown'}>
+                  <li className="dropdown-li-element">
+                    <a
+                      href="https://www.fnp.com/?utm_source=affiliate&utm_medium=Banner&utm_campaign=icubes_177_A1"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      Home
+                    </a>
+                  </li>
+                  <li className="dropdown-li-element">
+                    <a
+                      href="https://www.fnp.com/info/about-us"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      About Us
+                    </a>
+                  </li>
+                  <li className="dropdown-li-element">
+                    <a
+                      href="https://www.fnp.com/cakes?promo=cakes_tab_dt_hm"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      Cakes
+                    </a>
+                  </li>
+                  <li className="dropdown-li-element">
+                    <a
+                      href="https://www.fnp.com/flowers?promo=flowers_tab_dt_hm"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      Flowers
+                    </a>
+                  </li>
+                </ul>
+              </div>
               <span className="logo">
                 ferns<b>N</b>petals
               </span>
